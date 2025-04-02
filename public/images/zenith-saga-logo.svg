@@ -1,0 +1,37 @@
+<svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="120" rx="8" fill="#121212"/>
+  
+  <!-- Z Symbol -->
+  <path d="M50 30H90L50 90H90" stroke="#FF6B00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Text: ZENITH -->
+  <path d="M120 40L150 40L120 80L150 80" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M160 40V80" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M160 40H185" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M160 60H180" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M160 80H185" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M195 40V80" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M195 40H220" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M195 80H220" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M230 40V80" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M230 40H255" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M230 60H250" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M265 40V80" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M265 40H290" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M265 80H290" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Text: SAGA -->
+  <path d="M310 60C310 51.7157 316.716 45 325 45H340C348.284 45 355 51.7157 355 60V60C355 68.2843 348.284 75 340 75H325C316.716 75 310 68.2843 310 60V60Z" stroke="#FF6B00" stroke-width="4"/>
+  <path d="M365 45L365 75" stroke="#FF6B00" stroke-width="4" stroke-linecap="round"/>
+  <path d="M365 45H390" stroke="#FF6B00" stroke-width="4" stroke-linecap="round"/>
+  <path d="M365 60H385" stroke="#FF6B00" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="30" cy="60" r="10" fill="#FF6B00" fill-opacity="0.5"/>
+  <circle cx="370" cy="30" r="8" fill="#FF6B00" fill-opacity="0.3"/>
+  <circle cx="380" cy="90" r="6" fill="#FF6B00" fill-opacity="0.4"/>
+  
+  <!-- Tagline -->
+  <text x="200" y="100" font-family="Arial" font-size="12" fill="#F8F8F8" text-anchor="middle">ANIME &amp; POP CULTURE MERCHANDISE</text>
+</svg> 
