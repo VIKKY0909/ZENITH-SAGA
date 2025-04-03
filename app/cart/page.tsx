@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { TrashIcon, ShoppingBagIcon, ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/solid';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ClientWrapper from '@/components/ClientWrapper';
 
 interface CartItem {
   id: string;
@@ -19,6 +20,20 @@ interface CartItem {
 }
 
 export default function CartPage() {
+  return (
+    <ClientWrapper>
+      {(searchParams) => (
+        <CartContent searchParams={searchParams} />
+      )}
+    </ClientWrapper>
+  );
+}
+
+interface CartContentProps {
+  searchParams: URLSearchParams;
+}
+
+function CartContent({ searchParams }: CartContentProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);

@@ -6,9 +6,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ClientWrapper from '@/components/ClientWrapper';
 import { faqs } from '@/data/mockData';
 
 export default function FAQPage() {
+  return (
+    <ClientWrapper>
+      {(searchParams) => (
+        <FAQContent searchParams={searchParams} />
+      )}
+    </ClientWrapper>
+  );
+}
+
+interface FAQContentProps {
+  searchParams: URLSearchParams;
+}
+
+function FAQContent({ searchParams }: FAQContentProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   
   const toggleFAQ = (index: number) => {

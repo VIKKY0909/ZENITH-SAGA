@@ -1,15 +1,29 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ClientWrapper from '@/components/ClientWrapper';
 
-const PaymentSuccessPage = () => {
+export default function PaymentSuccessPage() {
+  return (
+    <ClientWrapper>
+      {(searchParams) => (
+        <PaymentSuccessContent searchParams={searchParams} />
+      )}
+    </ClientWrapper>
+  );
+}
+
+interface PaymentSuccessContentProps {
+  searchParams: URLSearchParams;
+}
+
+const PaymentSuccessContent = ({ searchParams }: PaymentSuccessContentProps) => {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const [paymentStatus, setPaymentStatus] = useState<'success' | 'processing' | 'error'>('processing');
   const [paymentId, setPaymentId] = useState<string | null>(null);
@@ -128,6 +142,4 @@ const PaymentSuccessPage = () => {
       <Footer />
     </div>
   );
-};
-
-export default PaymentSuccessPage; 
+} 

@@ -9,9 +9,24 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CategoryCard from '@/components/CategoryCard';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import ClientWrapper from '@/components/ClientWrapper';
 import { productCategories } from '@/data/mockData';
 
 export default function CategoriesPage() {
+  return (
+    <ClientWrapper>
+      {(searchParams) => (
+        <CategoriesContent searchParams={searchParams} />
+      )}
+    </ClientWrapper>
+  );
+}
+
+interface CategoriesContentProps {
+  searchParams: URLSearchParams;
+}
+
+function CategoriesContent({ searchParams }: CategoriesContentProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);

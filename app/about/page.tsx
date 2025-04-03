@@ -7,8 +7,23 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ClientWrapper from '@/components/ClientWrapper';
 
 export default function AboutPage() {
+  return (
+    <ClientWrapper>
+      {(searchParams) => (
+        <AboutContent searchParams={searchParams} />
+      )}
+    </ClientWrapper>
+  );
+}
+
+interface AboutContentProps {
+  searchParams: URLSearchParams;
+}
+
+function AboutContent({ searchParams }: AboutContentProps) {
   const [mounted, setMounted] = useState(false);
   
   // Animation variants

@@ -5,8 +5,23 @@ import { motion } from 'framer-motion';
 import { MapPinIcon, PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ClientWrapper from '@/components/ClientWrapper';
 
 export default function ContactPage() {
+  return (
+    <ClientWrapper>
+      {(searchParams) => (
+        <ContactContent searchParams={searchParams} />
+      )}
+    </ClientWrapper>
+  );
+}
+
+interface ContactContentProps {
+  searchParams: URLSearchParams;
+}
+
+function ContactContent({ searchParams }: ContactContentProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

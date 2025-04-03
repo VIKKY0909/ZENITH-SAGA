@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeftIcon, CheckCircleIcon, PhoneIcon, ShoppingBagIcon } from '@heroicons/react/24/solid';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ClientWrapper from '@/components/ClientWrapper';
 
 interface CartItem {
   id: string;
@@ -20,6 +21,20 @@ interface CartItem {
 }
 
 export default function CheckoutPage() {
+  return (
+    <ClientWrapper>
+      {(searchParams) => (
+        <CheckoutContent searchParams={searchParams} />
+      )}
+    </ClientWrapper>
+  );
+}
+
+interface CheckoutContentProps {
+  searchParams: URLSearchParams;
+}
+
+function CheckoutContent({ searchParams }: CheckoutContentProps) {
   const router = useRouter();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);

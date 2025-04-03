@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,10 +8,24 @@ import { AdjustmentsHorizontalIcon, XMarkIcon, FunnelIcon, MagnifyingGlassIcon }
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
+import ClientWrapper from '@/components/ClientWrapper';
 import { allProducts, productCategories, productTypes } from '@/data/mockData';
 
 export default function ProductsPage() {
-  const searchParams = useSearchParams();
+  return (
+    <ClientWrapper>
+      {(searchParams) => (
+        <ProductsContent searchParams={searchParams} />
+      )}
+    </ClientWrapper>
+  );
+}
+
+interface ProductsContentProps {
+  searchParams: URLSearchParams;
+}
+
+function ProductsContent({ searchParams }: ProductsContentProps) {
   const categoryParam = searchParams.get('category');
   const typeParam = searchParams.get('type');
   const searchQuery = searchParams.get('search');

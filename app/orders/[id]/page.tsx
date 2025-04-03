@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ClientWrapper from '@/components/ClientWrapper';
 
 interface OrderItem {
   id: string;
@@ -38,7 +39,18 @@ interface Order {
   status: string;
 }
 
-const OrderDetailsPage = () => {
+// Generate static params for the first 100 orders
+export async function generateStaticParams() {
+  // In a real app, you would fetch this from your API/database
+  // For now, we'll generate some mock order IDs
+  const orderIds = Array.from({ length: 100 }, (_, i) => ({
+    id: `order-${i + 1}`,
+  }));
+
+  return orderIds;
+}
+
+const OrderContent = ({ searchParams }: { searchParams: URLSearchParams }) => {
   const params = useParams();
   const router = useRouter();
   const [order, setOrder] = useState<Order | null>(null);
@@ -263,4 +275,12 @@ const OrderDetailsPage = () => {
   );
 };
 
-export default OrderDetailsPage; 
+export default function OrderDetailsPage() {
+  return (
+    <ClientWrapper>
+      {(searchParams) => (
+        <OrderContent searchParams={searchParams} />
+      )}
+    </ClientWrapper>
+  );
+} 

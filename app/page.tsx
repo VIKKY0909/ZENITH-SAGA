@@ -12,9 +12,24 @@ import ProductCard from '@/components/ProductCard';
 import CategoryCard from '@/components/CategoryCard';
 import Newsletter from '@/components/Newsletter';
 import FanFavoritesShowcase from '@/components/FanFavoritesShowcase';
+import ClientWrapper from '@/components/ClientWrapper';
 import { featuredProducts, productCategories } from '@/data/mockData';
 
 export default function Home() {
+  return (
+    <ClientWrapper>
+      {(searchParams) => (
+        <HomeContent searchParams={searchParams} />
+      )}
+    </ClientWrapper>
+  );
+}
+
+interface HomeContentProps {
+  searchParams: URLSearchParams;
+}
+
+function HomeContent({ searchParams }: HomeContentProps) {
   const [mounted, setMounted] = useState(false);
   
   // Animation variants

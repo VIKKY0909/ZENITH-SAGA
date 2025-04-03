@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { CheckCircleIcon, ClockIcon, TruckIcon, ArrowLeftIcon, PhoneIcon } from '@heroicons/react/24/solid';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ClientWrapper from '@/components/ClientWrapper';
 
 interface CartItem {
   id: string;
@@ -38,8 +39,21 @@ interface Order {
 }
 
 export default function OrderConfirmationPage() {
+  return (
+    <ClientWrapper>
+      {(searchParams) => (
+        <OrderConfirmationContent searchParams={searchParams} />
+      )}
+    </ClientWrapper>
+  );
+}
+
+interface OrderConfirmationContentProps {
+  searchParams: URLSearchParams;
+}
+
+function OrderConfirmationContent({ searchParams }: OrderConfirmationContentProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const orderId = searchParams.get('id');
   
   const [order, setOrder] = useState<Order | null>(null);
