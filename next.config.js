@@ -49,15 +49,21 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Optimize performance
-  experimental: {
-    optimizeCss: true,
-    scrollRestoration: true,
-  },
-  
   // Optimize output
   poweredByHeader: false,
+  
+  // Static site generation
   output: 'export',
+  
+  // Disable static generation for client-side only pages
+  // This is needed when exporting a site with complex dynamic routes
+  experimental: {
+    outputFileTracingExcludes: {
+      '*': [
+        'node_modules/sharp/**',
+      ],
+    },
+  },
 }
 
 module.exports = nextConfig 

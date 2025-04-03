@@ -3,6 +3,7 @@ import { Inter, Exo_2 } from 'next/font/google';
 import type { Metadata } from 'next';
 import PageTransition from '@/components/PageTransition';
 import { NavigationLoadingProvider } from "@/components/NavigationLoadingProvider";
+import { Suspense } from 'react';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -64,11 +65,13 @@ export default function RootLayout({
         </style>
       </head>
       <body className="font-body bg-zenith-black text-zenith-white min-h-screen">
-        <NavigationLoadingProvider>
-          <PageTransition>
-            {children}
-          </PageTransition>
-        </NavigationLoadingProvider>
+        <Suspense fallback={<div className="min-h-screen bg-zenith-black"></div>}>
+          <NavigationLoadingProvider>
+            <PageTransition>
+              {children}
+            </PageTransition>
+          </NavigationLoadingProvider>
+        </Suspense>
       </body>
     </html>
   );
