@@ -98,7 +98,7 @@ const Footer = () => {
           {/* Logo and About */}
           <motion.div variants={itemVariants} className="col-span-1 md:col-span-1">
             
-          <div className="relative h-16 w-16 rounded-full border-4 border-zenith-orange/20 hover:border-zenith-orange/40 transition-colors duration-300 overflow-hidden shadow-lg">
+          <div className="relative h-14 w-14 rounded-full border-4 border-zenith-orange/20 hover:border-zenith-orange/40 transition-colors duration-300 overflow-hidden shadow-lg">
               <Link href="/">
                 <Image 
                   src="/images/zenith logo.jpg" 

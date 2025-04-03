@@ -86,6 +86,18 @@ function CheckoutContent({ searchParams }: CheckoutContentProps) {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
   
+  const calculateShippingCost = () => {
+    const subtotal = calculateSubtotal();
+    // Free shipping for orders above ₹200
+    return subtotal >= 200 ? 0 : 50; // ₹50 shipping fee for orders below ₹200
+  };
+  
+  const calculateTotal = () => {
+    const subtotal = calculateSubtotal();
+    const shipping = calculateShippingCost();
+    return subtotal + shipping;
+  };
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -155,6 +167,12 @@ function CheckoutContent({ searchParams }: CheckoutContentProps) {
       return;
     }
     
+    // Check minimum order value
+    if (calculateSubtotal() < 100) {
+      showTemporaryFeedback('Minimum order value is ₹100', 'error');
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
@@ -168,6 +186,8 @@ function CheckoutContent({ searchParams }: CheckoutContentProps) {
         customerInfo: formData,
         items: cartItems,
         subtotal: calculateSubtotal(),
+        shipping: calculateShippingCost(),
+        total: calculateTotal(),
         orderDate: new Date().toISOString(),
       };
       
@@ -190,7 +210,9 @@ function CheckoutContent({ searchParams }: CheckoutContentProps) {
         Order Summary:
         ${cartItems.map(item => `${item.name} (${item.quantity}) - ₹${(item.price * item.quantity).toFixed(2)}`).join('\n')}
         
-        Total: ₹${calculateSubtotal().toFixed(2)}
+        Subtotal: ₹${calculateSubtotal().toFixed(2)}
+        Shipping: ₹${calculateShippingCost().toFixed(2)} ${calculateShippingCost() === 0 ? '(Free)' : ''}
+        Total: ₹${calculateTotal().toFixed(2)}
       `);
       
       // Simulate API call
@@ -248,29 +270,65 @@ function CheckoutContent({ searchParams }: CheckoutContentProps) {
           <div className="container-custom">
             <div className="max-w-2xl mx-auto bg-zenith-gray/30 backdrop-blur-sm rounded-lg p-8 text-center">
               <div className="flex justify-center mb-6">
-                <CheckCircleIcon className="h-24 w-24 text-green-500" />
+                <div className="w-16 h-16 rounded-full bg-zenith-orange/20 flex items-center justify-center">
+                  <CheckCircleIcon className="h-10 w-10 text-zenith-orange" />
+                </div>
               </div>
               
-              <h1 className="text-3xl font-anime font-bold text-zenith-white mb-4">Order Placed Successfully!</h1>
-              <p className="text-gray-300 mb-6">Thank you for your order. Your order ID is <span className="text-zenith-orange font-bold">{orderId}</span></p>
+              <h1 className="text-3xl font-bold text-zenith-white mb-2">Order Confirmed!</h1>
+              <p className="text-gray-400 mb-6">Your order has been placed successfully.</p>
               
-              <div className="bg-zenith-black/50 rounded-lg p-6 mb-8">
-                <div className="flex items-center justify-center mb-4">
-                  <PhoneIcon className="h-6 w-6 text-zenith-orange flex-shrink-0 mt-0.5 mr-3" />
-                  <div>
-                    <h3 className="font-bold mb-1">Our Team Will Contact You</h3>
-                    <p className="text-sm text-gray-300">
-                      After placing your order, our team will contact you within 24 hours to confirm your order details and discuss payment options.
-                    </p>
+              <div className="mb-6 bg-zenith-gray-dark/50 p-4 rounded">
+                <p className="text-lg font-bold text-zenith-orange mb-1">Order #{orderId}</p>
+                <p className="text-gray-400 text-sm">You will receive an email confirmation shortly.</p>
+              </div>
+              
+              <div className="mb-6">
+                <h2 className="text-xl font-bold text-zenith-white mb-4">Order Summary</h2>
+                <div className="space-y-3">
+                  {cartItems.map((item) => (
+                    <div key={item.id} className="flex items-center justify-between text-sm">
+                      <div className="flex items-center">
+                        <div className="w-10 h-10 relative rounded overflow-hidden mr-3">
+                          <Image 
+                            src={item.image} 
+                            alt={item.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="text-left">
+                          <p className="text-zenith-white">{item.name}</p>
+                          <p className="text-gray-400">Qty: {item.quantity}</p>
+                        </div>
+                      </div>
+                      <p className="text-zenith-white">₹{(item.price * item.quantity).toFixed(2)}</p>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-4 pt-3 border-t border-gray-700">
+                  <div className="flex justify-between text-gray-300 text-sm mb-1">
+                    <span>Subtotal</span>
+                    <span>₹{calculateSubtotal().toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between text-gray-300 text-sm mb-1">
+                    <span>Shipping</span>
+                    <span>{calculateShippingCost() === 0 ? 'Free' : `₹${calculateShippingCost().toFixed(2)}`}</span>
+                  </div>
+                  <div className="flex justify-between text-zenith-white font-bold mt-2 pt-2 border-t border-gray-700">
+                    <span>Total</span>
+                    <span>₹{calculateTotal().toFixed(2)}</span>
                   </div>
                 </div>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/" className="btn-primary">
-                  Return to Home
+                <Link href="/orders" className="btn-secondary">
+                  <ShoppingBagIcon className="h-5 w-5 mr-2" />
+                  View Orders
                 </Link>
-                <Link href="/products" className="btn-secondary">
+                <Link href="/products" className="btn-primary">
                   Continue Shopping
                 </Link>
               </div>
@@ -489,11 +547,23 @@ function CheckoutContent({ searchParams }: CheckoutContentProps) {
                   </div>
                   <div className="flex justify-between text-gray-300">
                     <span>Shipping</span>
-                    <span>Free</span>
+                    <span>₹{calculateShippingCost().toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-zenith-white font-bold text-lg pt-2 border-t border-gray-700 mt-2">
                     <span>Total</span>
-                    <span>₹{calculateSubtotal().toFixed(2)}</span>
+                    <span>₹{calculateTotal().toFixed(2)}</span>
+                  </div>
+                  
+                  {/* Shipping and minimum order information */}
+                  <div className="mt-4 pt-3 border-t border-gray-700 text-sm">
+                    <div className="flex items-center text-zenith-orange mb-1">
+                      <CheckCircleIcon className="h-4 w-4 mr-1" />
+                      <span>{calculateSubtotal() >= 100 ? 'Minimum order value met' : 'Minimum order value: ₹100'}</span>
+                    </div>
+                    <div className="flex items-center text-zenith-orange">
+                      <CheckCircleIcon className="h-4 w-4 mr-1" />
+                      <span>{calculateSubtotal() >= 200 ? 'Free shipping applied' : 'Free shipping on orders above ₹200'}</span>
+                    </div>
                   </div>
                 </div>
                 

@@ -50,20 +50,20 @@ export const featuredProducts: Product[] = [
     inStock: true
   },
   {
-    id: 'sticker_card-003',
-    name: 'Solo Leveling Collection',
-    description: 'Epic collection of Solo Leveling cards featuring Sung Jin-Woo. A must-have for manhwa fans!',
+    id: 'sticker_card-005',
+    name: 'Harry Potter Collection',
+    description: 'Magical collection of Harry Potter cards featuring wands and characters. Perfect for Potterheads!',
     price: 39,
-    image: '/images/products/card sticker/Solo Leveling _ Sung Jinwoo Wallpaper HD.jpg',
-    category: 'Anime',
+    image: '/images/products/card sticker/Harry Potter™ - The Wands Poster.jpg',
+    category: 'Movies',
     type: 'sticker_card',
-    stock: 90,
+    stock: 100,
     rating: 4.9,
-    numReviews: 167,
+    numReviews: 178,
     isNew: true,
     isPopular: true,
     isFeatured: true,
-    fandom: "Solo Leveling",
+    fandom: "Harry Potter",
     inStock: true
   },
   {
@@ -1985,23 +1985,7 @@ export const allProducts: Product[] = [
     fandom: "Friends",
     inStock: true
   },
-  {
-    id: 'sticker_card-005',
-    name: 'Harry Potter Collection',
-    description: 'Magical collection of Harry Potter cards featuring wands and characters. Perfect for Potterheads!',
-    price: 39,
-    image: '/images/products/card sticker/Harry Potter™ - The Wands Poster.jpg',
-    category: 'Movies',
-    type: 'sticker_card',
-    stock: 100,
-    rating: 4.9,
-    numReviews: 178,
-    isNew: true,
-    isPopular: true,
-    isFeatured: true,
-    fandom: "Harry Potter",
-    inStock: true
-  },
+  
   {
     id: 'sticker_card-006',
     name: 'One Direction Collection',

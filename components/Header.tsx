@@ -83,7 +83,7 @@ const Header = () => {
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <div className="relative h-20 w-20 rounded-full border-4 border-zenith-orange/20 hover:border-zenith-orange/40 transition-colors duration-300 overflow-hidden shadow-lg">
+          <div className="relative h-16 w-16 rounded-full border-4 border-zenith-orange/20 hover:border-zenith-orange/40 transition-colors duration-300 overflow-hidden shadow-lg">
             <Image 
               src="/images/zenith logo.jpg" 
               alt="Zenith Saga Store" 
