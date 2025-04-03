@@ -31,23 +31,7 @@ export interface Category {
 // Featured Products
 export const featuredProducts: Product[] = [
   
-  {
-    id: 'sticker-1',
-    name: 'Harry Potter Hogwarts Express Ticket',
-    description: 'Authentic-looking Hogwarts Express ticket sticker with magical details. Perfect for Potterheads!',
-    price: 5,
-    image: '/images/products/stickers/Hogwarts Express ticket - Astro Milk.jpg',
-    category: 'stickers',
-    type: 'sticker',
-    stock: 100,
-    rating: 4.8,
-    numReviews: 156,
-    isNew: true,
-    isPopular: true,
-    isFeatured: true,
-    fandom: "Harry Potter",
-    inStock: true
-  },
+  
   {
     id: 'sticker-2',
     name: 'Spirited Away No-Face Sticker',
@@ -63,6 +47,113 @@ export const featuredProducts: Product[] = [
     isPopular: true,
     isFeatured: true,
     fandom: "Spirited Away",
+    inStock: true
+  },
+  {
+    id: 'sticker_card-003',
+    name: 'Solo Leveling Collection',
+    description: 'Epic collection of Solo Leveling cards featuring Sung Jin-Woo. A must-have for manhwa fans!',
+    price: 39,
+    image: '/images/products/card sticker/Solo Leveling _ Sung Jinwoo Wallpaper HD.jpg',
+    category: 'Anime',
+    type: 'sticker_card',
+    stock: 90,
+    rating: 4.9,
+    numReviews: 167,
+    isNew: true,
+    isPopular: true,
+    isFeatured: true,
+    fandom: "Solo Leveling",
+    inStock: true
+  },
+  {
+    id: 'poster-013',
+    name: 'Porsche GT3 RSR Poster',
+    description: 'Stunning Porsche GT3 RSR racing car poster. Perfect for motorsport fans!',
+    price: 79,
+    image: '/images/products/poster/🤔°○ Porsche Motorsports 911 GT3 RSR GTE IMSA, in poster format by Rayeev Ray.jpeg',
+    category: 'Sports',
+    type: 'poster',
+    stock: 40,
+    rating: 4.9,
+    numReviews: 112,
+    isNew: true,
+    isPopular: true,
+    isFeatured: true,
+    fandom: "Motorsport",
+    inStock: true
+  },
+  {
+    id: "prod-003",
+    name: "Demon Slayer Tanjiro Card",
+    description: "Demon Slayer Tanjiro Card",
+    price: 29,
+    image: "/images/products/cards/Tanjiro Wallpaper.jpg",
+    category: "Anime",
+    type: "card",
+    stock: 100,
+    rating: 4.7,
+    numReviews: 156,
+    isNew: false,
+    isPopular: true,
+    isFeatured: false,
+    fandom: "Demon Slayer",
+    inStock: true
+  },
+  // {
+  //   id: 'sticker-9',
+  //   name: 'Mr. Bean Classic',
+  //   description: 'Iconic Mr. Bean sticker capturing his signature expression. A classic for comedy fans!',
+  //   price: 5,
+  //   image: '/images/products/stickers/Mr Bean.jpg',
+  //   category: 'stickers',
+  //   type: 'sticker',
+  //   stock: 80,
+  //   rating: 4.8,
+  //   numReviews: 134,
+  //   isNew: true,
+  //   isPopular: true,
+  //   isFeatured: true,
+  //   fandom: "Mr. Bean",
+  //   inStock: true
+  // },
+  // {
+  //   id: 'sticker-10',
+  //   name: 'Polite Cat',
+  //   description: 'Adorable polite cat sticker with perfect manners. Ideal for cat lovers!',
+  //   price: 5,
+  //   image: '/images/products/stickers/Polite Cat Stickers for Sale _ Free US Shipping.jpg',
+  //   category: 'stickers',
+  //   type: 'sticker',
+  //   stock: 100,
+  //   rating: 4.9,
+  //   numReviews: 156,
+  //   isNew: true,
+  //   isPopular: true,
+  //   isFeatured: true,
+  //   fandom: "Polite Cat",
+  //   inStock: true
+  // }
+];
+
+// All Products (including featured)
+export const allProducts: Product[] = [
+  ...featuredProducts,
+  {
+    id: 'sticker-1',
+    name: 'Harry Potter Hogwarts Express Ticket',
+    description: 'Authentic-looking Hogwarts Express ticket sticker with magical details. Perfect for Potterheads!',
+    price: 5,
+    image: '/images/products/stickers/Hogwarts Express ticket - Astro Milk.jpg',
+    category: 'stickers',
+    type: 'sticker',
+    stock: 100,
+    rating: 4.8,
+    numReviews: 156,
+    isNew: true,
+    isPopular: true,
+    isFeatured: true,
+    fandom: "Harry Potter",
     inStock: true
   },
   {
@@ -167,79 +258,7 @@ export const featuredProducts: Product[] = [
     fandom: "Chrome Dino",
     inStock: true
   },
-  // {
-  //   id: 'sticker-9',
-  //   name: 'Mr. Bean Classic',
-  //   description: 'Iconic Mr. Bean sticker capturing his signature expression. A classic for comedy fans!',
-  //   price: 5,
-  //   image: '/images/products/stickers/Mr Bean.jpg',
-  //   category: 'stickers',
-  //   type: 'sticker',
-  //   stock: 80,
-  //   rating: 4.8,
-  //   numReviews: 134,
-  //   isNew: true,
-  //   isPopular: true,
-  //   isFeatured: true,
-  //   fandom: "Mr. Bean",
-  //   inStock: true
-  // },
-  // {
-  //   id: 'sticker-10',
-  //   name: 'Polite Cat',
-  //   description: 'Adorable polite cat sticker with perfect manners. Ideal for cat lovers!',
-  //   price: 5,
-  //   image: '/images/products/stickers/Polite Cat Stickers for Sale _ Free US Shipping.jpg',
-  //   category: 'stickers',
-  //   type: 'sticker',
-  //   stock: 100,
-  //   rating: 4.9,
-  //   numReviews: 156,
-  //   isNew: true,
-  //   isPopular: true,
-  //   isFeatured: true,
-  //   fandom: "Polite Cat",
-  //   inStock: true
-  // }
-];
-
-// All Products (including featured)
-export const allProducts: Product[] = [
-  ...featuredProducts,
-  {
-    id: "prod-002",
-    name: "One Piece Luffy Card",
-    description: "One Piece Luffy Card",
-    price: 29,
-    image: "/images/products/cards/54.jpg",
-    category: "Anime",
-    type: "card",
-    stock: 100,
-    rating: 4.6,
-    numReviews: 156,
-    isNew: false,
-    isPopular: true,
-    isFeatured: false,
-    fandom: "One Piece",
-    inStock: true
-  },
-  {
-    id: "prod-003",
-    name: "Demon Slayer Tanjiro Card",
-    description: "Demon Slayer Tanjiro Card",
-    price: 29,
-    image: "/images/products/cards/Tanjiro Wallpaper.jpg",
-    category: "Anime",
-    type: "card",
-    stock: 100,
-    rating: 4.7,
-    numReviews: 156,
-    isNew: false,
-    isPopular: true,
-    isFeatured: false,
-    fandom: "Demon Slayer",
-    inStock: true
-  },
+  
   // {
   //   id: "prod-004",
   //   name: "My Hero Academia Deku Card",
@@ -1553,6 +1572,24 @@ export const allProducts: Product[] = [
     fandom: "Pokémon",
     inStock: true
   },
+  {
+    
+    id: "prod-002",
+    name: "One Piece Luffy Card",
+    description: "One Piece Luffy Card",
+    price: 29,
+    image: "/images/products/cards/54.jpg",
+    category: "Anime",
+    type: "card",
+    stock: 100,
+    rating: 4.6,
+    numReviews: 156,
+    isNew: false,
+    isPopular: true,
+    isFeatured: false,
+    fandom: "One Piece",
+    inStock: true
+  },
   // Poster Products
   {
     id: 'poster-001',
@@ -1571,6 +1608,7 @@ export const allProducts: Product[] = [
     fandom: "One Piece",
     inStock: true
   },
+ 
   {
     id: 'poster-002',
     name: 'Roronoa Zoro Green Poster',
@@ -1707,23 +1745,7 @@ export const allProducts: Product[] = [
     fandom: "Solo Leveling",
     inStock: true
   },
-  {
-    id: 'poster-010',
-    name: 'Valorant Game Art Poster',
-    description: 'Stunning Valorant game art poster. Perfect for gaming enthusiasts!',
-    price: 79,
-    image: '/images/products/poster/valorant-game-art-5120x2880-17655.jpg',
-    category: 'Gaming',
-    type: 'poster',
-    stock: 50,
-    rating: 4.8,
-    numReviews: 89,
-    isNew: true,
-    isPopular: true,
-    isFeatured: true,
-    fandom: "Valorant",
-    inStock: true
-  },
+  
   {
     id: 'poster-011',
     name: 'Dragon Ball Z Poster',
@@ -1759,22 +1781,23 @@ export const allProducts: Product[] = [
     inStock: true
   },
   {
-    id: 'poster-013',
-    name: 'Porsche GT3 RSR Poster',
-    description: 'Stunning Porsche GT3 RSR racing car poster. Perfect for motorsport fans!',
+    id: 'poster-010',
+    name: 'Valorant Game Art Poster',
+    description: 'Stunning Valorant game art poster. Perfect for gaming enthusiasts!',
     price: 79,
-    image: '/images/products/poster/🤔°○ Porsche Motorsports 911 GT3 RSR GTE IMSA, in poster format by Rayeev Ray.jpeg',
-    category: 'Sports',
+    image: '/images/products/poster/valorant-game-art-5120x2880-17655.jpg',
+    category: 'Gaming',
     type: 'poster',
-    stock: 40,
-    rating: 4.9,
-    numReviews: 112,
+    stock: 50,
+    rating: 4.8,
+    numReviews: 89,
     isNew: true,
     isPopular: true,
     isFeatured: true,
-    fandom: "Motorsport",
+    fandom: "Valorant",
     inStock: true
   },
+  
   {
     id: 'poster-014',
     name: 'CS2 Game Poster',
@@ -1896,7 +1919,7 @@ export const allProducts: Product[] = [
   },
   {
     id: 'sticker_card-001',
-    name: 'One Piece Wanted Posters Collection',
+    name: 'One Piece Wanted',
     description: 'Collection of One Piece wanted posters featuring iconic characters. Perfect for One Piece fans!',
     price: 39,
     image: '/images/products/card sticker/One piece wanted Shanks.jpg',
